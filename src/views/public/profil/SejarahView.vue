@@ -1,16 +1,22 @@
 <script setup lang="ts">
-const heroImg = '/school_hero_1777021806911.png'
 </script>
 
 <template>
   <div class="sejarah-page">
-    <div class="page-header" :style="{ backgroundImage: `url(${heroImg})` }">
-      <div class="header-overlay"></div>
-      <div class="container relative z-10 text-center animate-fade-in-up">
-        <h1 class="page-title">Sejarah Madrasah</h1>
-        <p class="page-subtitle">Perjalanan panjang MAN 1 OKI dalam mendedikasikan diri untuk pendidikan Islam.</p>
+    <section class="page-hero">
+      <div class="page-hero-overlay"></div>
+      <div class="container page-hero-content animate-fade-in-up">
+        <div class="breadcrumb">
+          <RouterLink to="/">Beranda</RouterLink>
+          <span>/</span>
+          <RouterLink to="/profil/visi-misi">Profil</RouterLink>
+          <span>/</span>
+          <span>Sejarah</span>
+        </div>
+        <h1 class="page-hero-title">Sejarah Madrasah</h1>
+        <p class="page-hero-subtitle">Perjalanan panjang MAN 1 OKI dalam mendedikasikan diri untuk pendidikan Islam.</p>
       </div>
-    </div>
+    </section>
 
     <section class="section">
       <div class="container max-w-4xl">
@@ -67,37 +73,7 @@ const heroImg = '/school_hero_1777021806911.png'
 </template>
 
 <style scoped>
-.page-header {
-  position: relative;
-  padding: 8rem 0 4rem;
-  background-size: cover;
-  background-position: center;
-  color: white;
-  margin-top: 0;
-}
-
-.header-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(0, 69, 50, 0.9) 0%, rgba(0, 69, 50, 0.6) 100%);
-}
-
-.relative { position: relative; }
-.z-10 { z-index: 10; }
-
-.page-title {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.page-subtitle {
-  font-size: 1.25rem;
-  opacity: 0.9;
-}
+.sejarah-page { padding-top: 80px; }
 
 .max-w-4xl { max-width: 900px; margin: 0 auto; }
 .text-xl { font-size: 1.25rem; }

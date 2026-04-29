@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const heroImg = '/school_hero_1777021806911.png'
 
 const pengumumanList = ref([
   { id: 1, title: 'Pendaftaran Siswa Baru (PPDB) 2026/2027 Dibuka', date: '01 Mei 2026', type: 'Akademik' },
@@ -14,13 +13,20 @@ const pengumumanList = ref([
 
 <template>
   <div class="pengumuman-page">
-    <div class="page-header" :style="{ backgroundImage: `url(${heroImg})` }">
-      <div class="header-overlay"></div>
-      <div class="container relative z-10 text-center animate-fade-in-up">
-        <h1 class="page-title">Pengumuman</h1>
-        <p class="page-subtitle">Informasi penting terkait jadwal akademik, ujian, dan kegiatan di MAN 1 OKI.</p>
+    <section class="page-hero">
+      <div class="page-hero-overlay"></div>
+      <div class="container page-hero-content animate-fade-in-up">
+        <div class="breadcrumb">
+          <RouterLink to="/">Beranda</RouterLink>
+          <span>/</span>
+          <RouterLink to="/berita">Informasi</RouterLink>
+          <span>/</span>
+          <span>Pengumuman</span>
+        </div>
+        <h1 class="page-hero-title">Pengumuman</h1>
+        <p class="page-hero-subtitle">Informasi penting terkait jadwal akademik, ujian, dan kegiatan di MAN 1 OKI.</p>
       </div>
-    </div>
+    </section>
 
     <section class="section">
       <div class="container">
@@ -53,39 +59,7 @@ const pengumumanList = ref([
 </template>
 
 <style scoped>
-.page-header {
-  position: relative;
-  padding: 8rem 0 4rem;
-  background-size: cover;
-  background-position: center;
-  color: white;
-  margin-top: 0;
-}
-
-.header-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(0, 69, 50, 0.9) 0%, rgba(0, 69, 50, 0.6) 100%);
-}
-
-.relative { position: relative; }
-.z-10 { z-index: 10; }
-
-.page-title {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.page-subtitle {
-  font-size: 1.25rem;
-  opacity: 0.9;
-  max-width: 600px;
-  margin: 0 auto;
-}
+.pengumuman-page { padding-top: 80px; }
 
 .filter-tabs {
   display: flex;

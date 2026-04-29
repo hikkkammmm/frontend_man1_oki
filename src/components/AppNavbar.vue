@@ -349,22 +349,26 @@ onUnmounted(() => {
 <style scoped>
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 1200px;
   z-index: 50;
   transition: var(--transition);
-  background-color: transparent;
-  padding: 1.5rem 0;
-}
-
-.navbar.scrolled {
   background-color: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--glass-border);
-  padding: 1rem 0;
-  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--glass-border);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  box-shadow: var(--shadow-md);
+}
+
+.navbar.scrolled {
+  top: 0.5rem;
+  box-shadow: var(--shadow-lg);
+  padding: 0.5rem 1.5rem;
 }
 
 .navbar-container {
@@ -531,11 +535,11 @@ onUnmounted(() => {
 
 .mobile-nav {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 1rem);
   left: 0;
   width: 100%;
   background-color: var(--bg-main);
-  border-bottom: 1px solid var(--gray-light);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.4s ease-out;
