@@ -1,8 +1,46 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
 // Images sourced from public folder dynamically
 const heroImg = '/school_hero_1777021806911.png'
 const principalImg = '/principal_portrait_1777021823882.png'
 const activityImg = '/student_activities_1777021842318.png'
+
+// ─── Quick Stats counter ──────────────────────────────────────────────────────
+const stats = [
+  { icon: '👨‍🎓', label: 'Siswa Aktif', target: 1250, suffix: '+', color: '#004532' },
+  { icon: '👩‍🏫', label: 'Tenaga Pendidik', target: 78, suffix: '', color: '#c1a059' },
+  { icon: '🎓', label: 'Alumni', target: 8500, suffix: '+', color: '#00664a' },
+  { icon: '🏆', label: 'Prestasi / Penghargaan', target: 340, suffix: '+', color: '#c1a059' },
+]
+const counts = ref<number[]>(stats.map(() => 0))
+const statsRef = ref<HTMLElement | null>(null)
+
+const animateCounter = (index: number, target: number) => {
+  const duration = 1800
+  const steps = 60
+  const increment = target / steps
+  let current = 0
+  const timer = setInterval(() => {
+    current = Math.min(current + increment, target)
+    counts.value[index] = Math.round(current)
+    if (current >= target) clearInterval(timer)
+  }, duration / steps)
+}
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting) {
+        stats.forEach((s, i) => animateCounter(i, s.target))
+        observer.disconnect()
+      }
+    },
+    { threshold: 0.3 },
+  )
+  if (statsRef.value) observer.observe(statsRef.value)
+})
+// ─────────────────────────────────────────────────────────────────────────────
 
 const beritaList = [
   {
@@ -66,6 +104,27 @@ const galeriList = [heroImg, activityImg, heroImg, activityImg, heroImg, activit
           <a href="#pengumuman" class="btn btn-outline" style="color: white; border-color: white"
             >Lihat Pengumuman</a
           >
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Quick Stats Section ─────────────────────────────────── -->
+    <section class="section stats-section" ref="statsRef">
+      <div class="container">
+        <h2 class="section-title">MAN 1 OKI dalam Angka</h2>
+        <div class="stats-grid">
+          <div v-for="(stat, i) in stats" :key="stat.label" class="stat-card card">
+            <div
+              class="stat-icon-wrap"
+              :style="{ background: `linear-gradient(135deg, ${stat.color}22, ${stat.color}44)` }"
+            >
+              <span class="stat-icon">{{ stat.icon }}</span>
+            </div>
+            <div class="stat-number" :style="{ color: stat.color }">
+              {{ counts[i].toLocaleString('id-ID') }}{{ stat.suffix }}
+            </div>
+            <div class="stat-label">{{ stat.label }}</div>
+          </div>
         </div>
       </div>
     </section>
@@ -635,5 +694,94 @@ const galeriList = [heroImg, activityImg, heroImg, activityImg, heroImg, activit
 
 .galeri-item:hover .galeri-overlay {
   opacity: 1;
+}
+
+/* Quick Stats Section */
+.stats-section {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.stats-section .section-title {
+  color: white;
+}
+
+.stats-section .section-title::after {
+  background: var(--secondary);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+  box-shadow: none;
+}
+
+.stat-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.stat-icon-wrap {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.stat-icon {
+  font-size: 2rem;
+}
+
+.stat-number {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1;
+  color: white;
+  font-variant-numeric: tabular-nums;
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  line-height: 1.3;
 }
 </style>

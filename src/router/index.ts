@@ -19,6 +19,21 @@ const router = createRouter({
     { path: '/profil/kepala-sekolah', name: 'kepala-sekolah', component: () => import('../views/public/profil/KepalaSekolahView.vue') },
     { path: '/profil/sejarah', name: 'sejarah', component: () => import('../views/public/profil/SejarahView.vue') },
     { path: '/profil/struktur', name: 'struktur', component: () => import('../views/public/profil/StrukturView.vue') },
+    { path: '/profil/fasilitas', name: 'fasilitas', component: () => import('../views/public/profil/FasilitasView.vue') },
+
+    // ─── Akademik Routes ──────────────────────────────────────────
+    { path: '/akademik/kurikulum', name: 'kurikulum', component: () => import('../views/public/akademik/KurikulumView.vue') },
+    { path: '/akademik/guru-staff', name: 'guru-staff', component: () => import('../views/public/akademik/GuruStaffView.vue') },
+    { path: '/akademik/kalender', name: 'kalender', component: () => import('../views/public/akademik/KalenderView.vue') },
+    { path: '/akademik/program-studi', name: 'program-studi', component: () => import('../views/public/akademik/ProgramStudiView.vue') },
+
+    // ─── Kesiswaan Routes ─────────────────────────────────────────
+    { path: '/kesiswaan/ekstrakurikuler', name: 'ekstrakurikuler', component: () => import('../views/public/kesiswaan/EkstrakurikulerView.vue') },
+    { path: '/kesiswaan/organisasi', name: 'organisasi', component: () => import('../views/public/kesiswaan/OrganisasiView.vue') },
+    { path: '/kesiswaan/prestasi', name: 'prestasi', component: () => import('../views/public/kesiswaan/PrestasiView.vue') },
+
+    // ─── PPDB ─────────────────────────────────────────────────────
+    { path: '/ppdb', name: 'ppdb', component: () => import('../views/public/PPDBView.vue') },
 
     // ─── Auth Routes ──────────────────────────────────────────────
     {

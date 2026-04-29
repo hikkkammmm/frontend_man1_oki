@@ -4,7 +4,21 @@ import { RouterLink } from 'vue-router'
 
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
-const isProfilDropdownOpen = ref(false)
+
+const activeDropdown = ref<string | null>(null)
+
+const openDropdown = (name: string) => {
+  activeDropdown.value = name
+}
+const closeDropdown = () => {
+  activeDropdown.value = null
+}
+
+// Mobile expandable sections
+const mobileExpanded = ref<Record<string, boolean>>({})
+const toggleMobile = (key: string) => {
+  mobileExpanded.value[key] = !mobileExpanded.value[key]
+}
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 20
@@ -32,16 +46,12 @@ onUnmounted(() => {
         <RouterLink to="/" class="nav-link">Beranda</RouterLink>
 
         <!-- Dropdown Profil -->
-        <div
-          class="dropdown"
-          @mouseenter="isProfilDropdownOpen = true"
-          @mouseleave="isProfilDropdownOpen = false"
-        >
+        <div class="dropdown" @mouseenter="openDropdown('profil')" @mouseleave="closeDropdown">
           <button class="nav-link dropdown-toggle">
             Profil
             <svg
               class="chevron"
-              :class="{ rotate: isProfilDropdownOpen }"
+              :class="{ rotate: activeDropdown === 'profil' }"
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
@@ -55,20 +65,115 @@ onUnmounted(() => {
               <path d="m6 9 6 6 6-6" />
             </svg>
           </button>
-          <div class="dropdown-menu" :class="{ show: isProfilDropdownOpen }">
-            <RouterLink to="/profil/visi-misi" class="dropdown-item">Visi Misi</RouterLink>
+          <div class="dropdown-menu" :class="{ show: activeDropdown === 'profil' }">
+            <RouterLink to="/profil/sejarah" class="dropdown-item">Sejarah Singkat</RouterLink>
+            <RouterLink to="/profil/visi-misi" class="dropdown-item">Visi dan Misi</RouterLink>
             <RouterLink to="/profil/kepala-sekolah" class="dropdown-item"
-              >Kepala Sekolah</RouterLink
+              >Sambutan Kepala Sekolah</RouterLink
             >
-            <RouterLink to="/profil/sejarah" class="dropdown-item">Sejarah</RouterLink>
-            <RouterLink to="/profil/struktur" class="dropdown-item">Struktur Keguruan</RouterLink>
+            <RouterLink to="/profil/struktur" class="dropdown-item"
+              >Struktur Organisasi</RouterLink
+            >
+            <RouterLink to="/profil/fasilitas" class="dropdown-item"
+              >Fasilitas Sekolah</RouterLink
+            >
           </div>
         </div>
 
-        <RouterLink to="/berita" class="nav-link">Berita</RouterLink>
-        <RouterLink to="/pengumuman" class="nav-link">Pengumuman</RouterLink>
-        <RouterLink to="/kegiatan" class="nav-link">Kegiatan</RouterLink>
-        <RouterLink to="/galeri" class="nav-link">Galeri</RouterLink>
+        <!-- Dropdown Akademik -->
+        <div class="dropdown" @mouseenter="openDropdown('akademik')" @mouseleave="closeDropdown">
+          <button class="nav-link dropdown-toggle">
+            Akademik
+            <svg
+              class="chevron"
+              :class="{ rotate: activeDropdown === 'akademik' }"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="dropdown-menu" :class="{ show: activeDropdown === 'akademik' }">
+            <RouterLink to="/akademik/kurikulum" class="dropdown-item">Kurikulum</RouterLink>
+            <RouterLink to="/akademik/guru-staff" class="dropdown-item">Guru & Staff</RouterLink>
+            <RouterLink to="/akademik/kalender" class="dropdown-item"
+              >Kalender Akademik</RouterLink
+            >
+            <RouterLink to="/akademik/program-studi" class="dropdown-item"
+              >Program Studi / Jurusan</RouterLink
+            >
+          </div>
+        </div>
+
+        <!-- Dropdown Kesiswaan -->
+        <div class="dropdown" @mouseenter="openDropdown('kesiswaan')" @mouseleave="closeDropdown">
+          <button class="nav-link dropdown-toggle">
+            Kesiswaan
+            <svg
+              class="chevron"
+              :class="{ rotate: activeDropdown === 'kesiswaan' }"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="dropdown-menu" :class="{ show: activeDropdown === 'kesiswaan' }">
+            <RouterLink to="/kesiswaan/ekstrakurikuler" class="dropdown-item"
+              >Ekstrakurikuler</RouterLink
+            >
+            <RouterLink to="/kesiswaan/organisasi" class="dropdown-item"
+              >Organisasi Siswa (OSIS/MPK)</RouterLink
+            >
+            <RouterLink to="/kesiswaan/prestasi" class="dropdown-item"
+              >Prestasi Siswa</RouterLink
+            >
+          </div>
+        </div>
+
+        <!-- Dropdown Informasi -->
+        <div class="dropdown" @mouseenter="openDropdown('informasi')" @mouseleave="closeDropdown">
+          <button class="nav-link dropdown-toggle">
+            Informasi
+            <svg
+              class="chevron"
+              :class="{ rotate: activeDropdown === 'informasi' }"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="dropdown-menu" :class="{ show: activeDropdown === 'informasi' }">
+            <RouterLink to="/berita" class="dropdown-item">Berita / Artikel</RouterLink>
+            <RouterLink to="/pengumuman" class="dropdown-item">Pengumuman</RouterLink>
+            <RouterLink to="/galeri" class="dropdown-item">Galeri Foto &amp; Video</RouterLink>
+          </div>
+        </div>
+
+        <!-- PPDB Button -->
+        <RouterLink to="/ppdb" class="btn-ppdb-nav">PPDB 2026/2027</RouterLink>
       </nav>
 
       <!-- Mobile Menu Toggle -->
@@ -115,46 +220,126 @@ onUnmounted(() => {
         >
 
         <div class="mobile-dropdown">
-          <div class="mobile-dropdown-header">Profil</div>
-          <div class="mobile-dropdown-content">
+          <button class="mobile-dropdown-header" @click="toggleMobile('profil')">
+            Profil <span class="mobile-chevron" :class="{ rotate: mobileExpanded.profil }">▾</span>
+          </button>
+          <div class="mobile-dropdown-content" :class="{ expanded: mobileExpanded.profil }">
+            <RouterLink
+              to="/profil/sejarah"
+              class="mobile-nav-link sub"
+              @click="isMobileMenuOpen = false"
+              >Sejarah Singkat</RouterLink
+            >
             <RouterLink
               to="/profil/visi-misi"
               class="mobile-nav-link sub"
               @click="isMobileMenuOpen = false"
-              >Visi Misi</RouterLink
+              >Visi dan Misi</RouterLink
             >
             <RouterLink
               to="/profil/kepala-sekolah"
               class="mobile-nav-link sub"
               @click="isMobileMenuOpen = false"
-              >Kepala Sekolah</RouterLink
-            >
-            <RouterLink
-              to="/profil/sejarah"
-              class="mobile-nav-link sub"
-              @click="isMobileMenuOpen = false"
-              >Sejarah</RouterLink
+              >Sambutan Kepala Sekolah</RouterLink
             >
             <RouterLink
               to="/profil/struktur"
               class="mobile-nav-link sub"
               @click="isMobileMenuOpen = false"
-              >Struktur</RouterLink
+              >Struktur Organisasi</RouterLink
+            >
+            <RouterLink
+              to="/profil/fasilitas"
+              class="mobile-nav-link sub"
+              @click="isMobileMenuOpen = false"
+              >Fasilitas Sekolah</RouterLink
             >
           </div>
         </div>
 
-        <RouterLink to="/berita" class="mobile-nav-link" @click="isMobileMenuOpen = false"
-          >Berita</RouterLink
-        >
-        <RouterLink to="/pengumuman" class="mobile-nav-link" @click="isMobileMenuOpen = false"
-          >Pengumuman</RouterLink
-        >
-        <RouterLink to="/kegiatan" class="mobile-nav-link" @click="isMobileMenuOpen = false"
-          >Kegiatan</RouterLink
-        >
-        <RouterLink to="/galeri" class="mobile-nav-link" @click="isMobileMenuOpen = false"
-          >Galeri</RouterLink
+        <div class="mobile-dropdown">
+          <button class="mobile-dropdown-header" @click="toggleMobile('akademik')">
+            Akademik
+            <span class="mobile-chevron" :class="{ rotate: mobileExpanded.akademik }">▾</span>
+          </button>
+          <div class="mobile-dropdown-content" :class="{ expanded: mobileExpanded.akademik }">
+            <RouterLink
+              to="/akademik/kurikulum"
+              class="mobile-nav-link sub"
+              @click="isMobileMenuOpen = false"
+              >Kurikulum</RouterLink
+            >
+            <RouterLink
+              to="/akademik/guru-staff"
+              class="mobile-nav-link sub"
+              @click="isMobileMenuOpen = false"
+              >Guru &amp; Staff</RouterLink
+            >
+            <RouterLink
+              to="/akademik/kalender"
+              class="mobile-nav-link sub"
+              @click="isMobileMenuOpen = false"
+              >Kalender Akademik</RouterLink
+            >
+            <RouterLink
+              to="/akademik/program-studi"
+              class="mobile-nav-link sub"
+              @click="isMobileMenuOpen = false"
+              >Program Studi / Jurusan</RouterLink
+            >
+          </div>
+        </div>
+
+        <div class="mobile-dropdown">
+          <button class="mobile-dropdown-header" @click="toggleMobile('kesiswaan')">
+            Kesiswaan
+            <span class="mobile-chevron" :class="{ rotate: mobileExpanded.kesiswaan }">▾</span>
+          </button>
+          <div class="mobile-dropdown-content" :class="{ expanded: mobileExpanded.kesiswaan }">
+            <RouterLink
+              to="/kesiswaan/ekstrakurikuler"
+              class="mobile-nav-link sub"
+              @click="isMobileMenuOpen = false"
+              >Ekstrakurikuler</RouterLink
+            >
+            <RouterLink
+              to="/kesiswaan/organisasi"
+              class="mobile-nav-link sub"
+              @click="isMobileMenuOpen = false"
+              >Organisasi Siswa (OSIS/MPK)</RouterLink
+            >
+            <RouterLink
+              to="/kesiswaan/prestasi"
+              class="mobile-nav-link sub"
+              @click="isMobileMenuOpen = false"
+              >Prestasi Siswa</RouterLink
+            >
+          </div>
+        </div>
+
+        <div class="mobile-dropdown">
+          <button class="mobile-dropdown-header" @click="toggleMobile('informasi')">
+            Informasi
+            <span class="mobile-chevron" :class="{ rotate: mobileExpanded.informasi }">▾</span>
+          </button>
+          <div class="mobile-dropdown-content" :class="{ expanded: mobileExpanded.informasi }">
+            <RouterLink to="/berita" class="mobile-nav-link sub" @click="isMobileMenuOpen = false"
+              >Berita / Artikel</RouterLink
+            >
+            <RouterLink
+              to="/pengumuman"
+              class="mobile-nav-link sub"
+              @click="isMobileMenuOpen = false"
+              >Pengumuman</RouterLink
+            >
+            <RouterLink to="/galeri" class="mobile-nav-link sub" @click="isMobileMenuOpen = false"
+              >Galeri Foto &amp; Video</RouterLink
+            >
+          </div>
+        </div>
+
+        <RouterLink to="/ppdb" class="btn-ppdb-mobile" @click="isMobileMenuOpen = false"
+          >🎓 PPDB 2026/2027</RouterLink
         >
       </div>
     </div>
@@ -217,8 +402,38 @@ onUnmounted(() => {
   .desktop-nav {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.25rem;
   }
+}
+
+.btn-ppdb-nav {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.25rem;
+  background: var(--secondary);
+  color: #1a1a1a;
+  border-radius: 2rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(193, 160, 89, 0.35);
+}
+
+.btn-ppdb-nav:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(193, 160, 89, 0.5);
+}
+
+.btn-ppdb-mobile {
+  display: block;
+  text-align: center;
+  padding: 0.75rem 1.5rem;
+  background: var(--secondary);
+  color: #1a1a1a;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  margin-top: 0.5rem;
 }
 
 .nav-link {
@@ -358,14 +573,42 @@ onUnmounted(() => {
   font-size: 1.1rem;
   padding: 0.5rem 0;
   color: var(--primary);
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.mobile-chevron {
+  transition: transform 0.25s ease;
+  display: inline-block;
+}
+
+.mobile-chevron.rotate {
+  transform: rotate(180deg);
 }
 
 .mobile-dropdown-content {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.3s ease,
+    padding 0.3s ease;
+}
+
+.mobile-dropdown-content.expanded {
+  max-height: 400px;
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--gray-light);
+  padding-bottom: 0.75rem;
 }
 </style>
