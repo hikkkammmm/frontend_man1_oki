@@ -66,17 +66,11 @@ onUnmounted(() => {
             </svg>
           </button>
           <div class="dropdown-menu" :class="{ show: activeDropdown === 'profil' }">
-            <RouterLink to="/profil/sejarah" class="dropdown-item">Sejarah Singkat</RouterLink>
-            <RouterLink to="/profil/visi-misi" class="dropdown-item">Visi dan Misi</RouterLink>
-            <RouterLink to="/profil/kepala-sekolah" class="dropdown-item"
-              >Sambutan Kepala Sekolah</RouterLink
-            >
-            <RouterLink to="/profil/struktur" class="dropdown-item"
-              >Struktur Organisasi</RouterLink
-            >
-            <RouterLink to="/profil/fasilitas" class="dropdown-item"
-              >Fasilitas Sekolah</RouterLink
-            >
+            <RouterLink to="/profil/sejarah" class="dropdown-item">Sejarah</RouterLink>
+            <RouterLink to="/profil/visi-misi" class="dropdown-item">Visi Misi</RouterLink>
+            <RouterLink to="/profil/kepala-sekolah" class="dropdown-item">Sambutan</RouterLink>
+            <RouterLink to="/profil/struktur" class="dropdown-item">Struktur</RouterLink>
+            <RouterLink to="/profil/fasilitas" class="dropdown-item">Fasilitas</RouterLink>
           </div>
         </div>
 
@@ -103,12 +97,8 @@ onUnmounted(() => {
           <div class="dropdown-menu" :class="{ show: activeDropdown === 'akademik' }">
             <RouterLink to="/akademik/kurikulum" class="dropdown-item">Kurikulum</RouterLink>
             <RouterLink to="/akademik/guru-staff" class="dropdown-item">Guru & Staff</RouterLink>
-            <RouterLink to="/akademik/kalender" class="dropdown-item"
-              >Kalender Akademik</RouterLink
-            >
-            <RouterLink to="/akademik/program-studi" class="dropdown-item"
-              >Program Studi / Jurusan</RouterLink
-            >
+            <RouterLink to="/akademik/kalender" class="dropdown-item">Kalender Akademik</RouterLink>
+            <RouterLink to="/akademik/program-studi" class="dropdown-item">Jurusan</RouterLink>
           </div>
         </div>
 
@@ -136,12 +126,8 @@ onUnmounted(() => {
             <RouterLink to="/kesiswaan/ekstrakurikuler" class="dropdown-item"
               >Ekstrakurikuler</RouterLink
             >
-            <RouterLink to="/kesiswaan/organisasi" class="dropdown-item"
-              >Organisasi Siswa (OSIS/MPK)</RouterLink
-            >
-            <RouterLink to="/kesiswaan/prestasi" class="dropdown-item"
-              >Prestasi Siswa</RouterLink
-            >
+            <RouterLink to="/kesiswaan/organisasi" class="dropdown-item">Organisasi</RouterLink>
+            <RouterLink to="/kesiswaan/prestasi" class="dropdown-item">Prestasi Siswa</RouterLink>
           </div>
         </div>
 
@@ -173,7 +159,7 @@ onUnmounted(() => {
         </div>
 
         <!-- PPDB Button -->
-        <RouterLink to="/ppdb" class="btn-ppdb-nav">PPDB 2026/2027</RouterLink>
+        <RouterLink to="/ppdb" class="btn-ppdb-nav">PPDB</RouterLink>
       </nav>
 
       <!-- Mobile Menu Toggle -->
@@ -339,7 +325,7 @@ onUnmounted(() => {
         </div>
 
         <RouterLink to="/ppdb" class="btn-ppdb-mobile" @click="isMobileMenuOpen = false"
-          >🎓 PPDB 2026/2027</RouterLink
+          >PPDB</RouterLink
         >
       </div>
     </div>
@@ -394,6 +380,7 @@ onUnmounted(() => {
   font-weight: 700;
   letter-spacing: -0.5px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

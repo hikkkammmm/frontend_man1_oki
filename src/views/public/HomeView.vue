@@ -31,7 +31,7 @@ const animateCounter = (index: number, target: number) => {
 onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {
-      if (entries[0].isIntersecting) {
+      if (entries[0]?.isIntersecting) {
         stats.forEach((s, i) => animateCounter(i, s.target))
         observer.disconnect()
       }
@@ -121,7 +121,7 @@ const galeriList = [heroImg, activityImg, heroImg, activityImg, heroImg, activit
               <span class="stat-icon">{{ stat.icon }}</span>
             </div>
             <div class="stat-number" :style="{ color: stat.color }">
-              {{ counts[i].toLocaleString('id-ID') }}{{ stat.suffix }}
+              {{ counts[i] != null ? counts[i].toLocaleString('id-ID') : '0' }}{{ stat.suffix }}
             </div>
             <div class="stat-label">{{ stat.label }}</div>
           </div>
@@ -245,7 +245,9 @@ const galeriList = [heroImg, activityImg, heroImg, activityImg, heroImg, activit
           </div>
         </div>
         <div class="text-center mt-8">
-          <RouterLink to="/kegiatan" class="btn btn-primary">Lihat Selengkapnya</RouterLink>
+          <RouterLink to="/kesiswaan/ekstrakurikuler" class="btn btn-primary"
+            >Lihat Selengkapnya</RouterLink
+          >
         </div>
       </div>
     </section>

@@ -1,5 +1,4 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="sejarah-page">
@@ -14,7 +13,9 @@
           <span>Sejarah</span>
         </div>
         <h1 class="page-hero-title">Sejarah Madrasah</h1>
-        <p class="page-hero-subtitle">Perjalanan panjang MAN 1 OKI dalam mendedikasikan diri untuk pendidikan Islam.</p>
+        <p class="page-hero-subtitle">
+          Perjalanan panjang MAN 1 OKI dalam mendedikasikan diri untuk pendidikan Islam.
+        </p>
       </div>
     </section>
 
@@ -22,7 +23,9 @@
       <div class="container max-w-4xl">
         <div class="prose mb-12 text-center">
           <p class="text-xl leading-relaxed text-muted">
-            Berdiri sejak puluhan tahun yang lalu, MAN 1 Ogan Komering Ilir telah mengalami berbagai perkembangan baik dari segi fisik bangunan, fasilitas, maupun kualitas pendidikan yang ditawarkan. Berikut adalah tonggak sejarah penting madrasah kami.
+            Berdiri sejak puluhan tahun yang lalu, MAN 1 Ogan Komering Ilir telah mengalami berbagai
+            perkembangan baik dari segi fisik bangunan, fasilitas, maupun kualitas pendidikan yang
+            ditawarkan. Berikut adalah tonggak sejarah penting madrasah kami.
           </p>
         </div>
 
@@ -31,15 +34,22 @@
             <div class="timeline-year">1978</div>
             <div class="timeline-content card">
               <h3 class="timeline-title">Awal Berdiri</h3>
-              <p>Madrasah ini pada mulanya didirikan atas inisiatif tokoh masyarakat dan ulama setempat dengan nama awal PGAN (Pendidikan Guru Agama Negeri) 4 Tahun Kayuagung.</p>
+              <p>
+                Madrasah ini pada mulanya didirikan atas inisiatif tokoh masyarakat dan ulama
+                setempat dengan nama awal PGAN (Pendidikan Guru Agama Negeri) 4 Tahun Kayuagung.
+              </p>
             </div>
           </div>
-          
+
           <div class="timeline-item">
             <div class="timeline-year">1990</div>
             <div class="timeline-content card">
               <h3 class="timeline-title">Alih Fungsi Menjadi MAN</h3>
-              <p>Berdasarkan SK Menteri Agama, PGAN 4 Tahun dialihfungsikan menjadi Madrasah Aliyah Negeri (MAN) Kayuagung dengan fokus pendidikan menengah atas berciri khas agama Islam.</p>
+              <p>
+                Berdasarkan SK Menteri Agama, PGAN 4 Tahun dialihfungsikan menjadi Madrasah Aliyah
+                Negeri (MAN) Kayuagung dengan fokus pendidikan menengah atas berciri khas agama
+                Islam.
+              </p>
             </div>
           </div>
 
@@ -47,7 +57,10 @@
             <div class="timeline-year">2005</div>
             <div class="timeline-content card">
               <h3 class="timeline-title">Pembangunan Fasilitas Terpadu</h3>
-              <p>Mendapat bantuan revitalisasi madrasah yang mencakup pembangunan gedung kelas baru berlantai dua, laboratorium MIPA, dan perpustakaan digital.</p>
+              <p>
+                Mendapat bantuan revitalisasi madrasah yang mencakup pembangunan gedung kelas baru
+                berlantai dua, laboratorium MIPA, dan perpustakaan digital.
+              </p>
             </div>
           </div>
 
@@ -55,7 +68,10 @@
             <div class="timeline-year">2015</div>
             <div class="timeline-content card">
               <h3 class="timeline-title">Perubahan Nomenklatur</h3>
-              <p>Mengalami perubahan nomenklatur menjadi MAN 1 Ogan Komering Ilir (MAN 1 OKI) seiring dengan penataan nama madrasah di seluruh wilayah Sumatera Selatan.</p>
+              <p>
+                Mengalami perubahan nomenklatur menjadi MAN 1 Ogan Komering Ilir (MAN 1 OKI) seiring
+                dengan penataan nama madrasah di seluruh wilayah Sumatera Selatan.
+              </p>
             </div>
           </div>
 
@@ -63,7 +79,10 @@
             <div class="timeline-year">2023 - Sekarang</div>
             <div class="timeline-content card">
               <h3 class="timeline-title">Madrasah Berbasis Digital</h3>
-              <p>Menerapkan sistem pembelajaran berbasis digital dan menjadi madrasah rujukan tingkat provinsi dalam bidang prestasi akademik sains dan teknologi.</p>
+              <p>
+                Menerapkan sistem pembelajaran berbasis digital dan menjadi madrasah rujukan tingkat
+                provinsi dalam bidang prestasi akademik sains dan teknologi.
+              </p>
             </div>
           </div>
         </div>
@@ -73,14 +92,29 @@
 </template>
 
 <style scoped>
-.sejarah-page { padding-top: 80px; }
+.sejarah-page {
+  padding-top: 80px;
+}
 
-.max-w-4xl { max-width: 900px; margin: 0 auto; }
-.text-xl { font-size: 1.25rem; }
-.leading-relaxed { line-height: 1.8; }
-.text-muted { color: var(--text-muted); }
-.mb-12 { margin-bottom: 3rem; }
-.text-center { text-align: center; }
+.max-w-4xl {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.text-xl {
+  font-size: 1.25rem;
+}
+.leading-relaxed {
+  line-height: 1.8;
+}
+.text-muted {
+  color: var(--text-muted);
+}
+.mb-12 {
+  margin-bottom: 3rem;
+}
+.text-center {
+  text-align: center;
+}
 
 /* Timeline Styles */
 .timeline {

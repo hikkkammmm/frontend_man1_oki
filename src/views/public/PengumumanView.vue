@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { pengumumanStore } from '../../stores/admin/pengumuman'
 
+const store = pengumumanStore()
+const filterType = ref('Semua')
 
-const pengumumanList = ref([
-  { id: 1, title: 'Pendaftaran Siswa Baru (PPDB) 2026/2027 Dibuka', date: '01 Mei 2026', type: 'Akademik' },
-  { id: 2, title: 'Jadwal Ujian Akhir Semester Genap', date: '20 Mei 2026', type: 'Ujian' },
-  { id: 3, title: 'Pengambilan Raport Semester Genap', date: '15 Jun 2026', type: 'Akademik' },
-  { id: 4, title: 'Libur Hari Raya Idul Fitri 1447 H', date: '10 Mar 2026', type: 'Umum' },
-  { id: 5, title: 'Lomba Kemerdekaan Antar Kelas', date: '17 Agu 2026', type: 'Kegiatan' }
-])
+const categories = ['Semua', 'Akademik', 'Ujian', 'Kegiatan', 'Umum']
+
+const filtered = computed(() => {
+  if (filterType.value === 'Semua') {
+    return store.list.filter((p) => p.status === 'active')
+  }
+  return store.list.filter((p) => p.status === 'active' && p.category === filterType.value)
+})
 </script>
 
 <template>
@@ -24,33 +28,87 @@ const pengumumanList = ref([
           <span>Pengumuman</span>
         </div>
         <h1 class="page-hero-title">Pengumuman</h1>
-        <p class="page-hero-subtitle">Informasi penting terkait jadwal akademik, ujian, dan kegiatan di MAN 1 OKI.</p>
+        <p class="page-hero-subtitle">
+          Informasi penting terkait jadwal akademik, ujian, dan kegiatan di MAN 1 OKI.
+        </p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
         <div class="filter-tabs mb-8">
-          <button class="filter-tab active">Semua</button>
-          <button class="filter-tab">Akademik</button>
-          <button class="filter-tab">Ujian</button>
-          <button class="filter-tab">Kegiatan</button>
-          <button class="filter-tab">Umum</button>
+          <button
+            v-for="cat in categories"
+            :key="cat"
+            class="filter-tab"
+            :class="{ active: filterType === cat }"
+            @click="filterType = cat"
+          >
+            {{ cat }}
+          </button>
         </div>
 
         <div class="pengumuman-list">
-          <div v-for="pengumuman in pengumumanList" :key="pengumuman.id" class="pengumuman-item card">
+          <div v-if="filtered.length === 0" class="empty-state">
+            <span>📭</span>
+            <p>Belum ada pengumuman.</p>
+          </div>
+          <div v-for="pengumuman in filtered" :key="pengumuman.id" class="pengumuman-item card">
             <div class="pengumuman-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <path d="M14 2v6h6" />
+                <path d="M16 13H8" />
+                <path d="M16 17H8" />
+                <path d="M10 9H8" />
+              </svg>
             </div>
             <div class="pengumuman-info">
               <div class="flex items-center gap-2 mb-1">
-                <span class="badge">{{ pengumuman.type }}</span>
-                <span class="pengumuman-date">{{ pengumuman.date }}</span>
+                <span class="badge">{{ pengumuman.category }}</span>
+                <span class="pengumuman-date">{{
+                  new Date(pengumuman.date).toLocaleDateString('id-ID', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric',
+                  })
+                }}</span>
               </div>
               <h3 class="pengumuman-title">{{ pengumuman.title }}</h3>
             </div>
-            <button class="btn btn-outline btn-detail">Detail Dokumen</button>
+            <a
+              :href="pengumuman.pdfUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline btn-detail"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Lihat PDF
+            </a>
           </div>
         </div>
       </div>
@@ -59,7 +117,9 @@ const pengumumanList = ref([
 </template>
 
 <style scoped>
-.pengumuman-page { padding-top: 80px; }
+.pengumuman-page {
+  padding-top: 80px;
+}
 
 .filter-tabs {
   display: flex;
@@ -79,7 +139,8 @@ const pengumumanList = ref([
   transition: var(--transition);
 }
 
-.filter-tab:hover, .filter-tab.active {
+.filter-tab:hover,
+.filter-tab.active {
   background: var(--primary);
   color: white;
   border-color: var(--primary);

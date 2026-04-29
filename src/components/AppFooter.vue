@@ -43,9 +43,9 @@ import { RouterLink } from 'vue-router'
         <div class="footer-links-group">
           <h3 class="footer-heading">Informasi</h3>
           <ul class="footer-links">
-            <li><RouterLink to="/pendaftaran">Pendaftaran</RouterLink></li>
-            <li><RouterLink to="/akademik">Kalender Akademik</RouterLink></li>
-            <li><RouterLink to="/kegiatan">Kegiatan Siswa</RouterLink></li>
+            <li><RouterLink to="/ppdb">Pendaftaran</RouterLink></li>
+            <li><RouterLink to="/akademik/kalender">Kalender Akademik</RouterLink></li>
+            <li><RouterLink to="/kesiswaan/ekstrakurikuler">Kegiatan Siswa</RouterLink></li>
             <li><RouterLink to="/bantuan">Pusat Bantuan</RouterLink></li>
           </ul>
         </div>
@@ -73,7 +73,7 @@ import { RouterLink } from 'vue-router'
         <p>&copy; 2026 MAN 1 OKI. All rights reserved.</p>
         <div class="footer-bottom-links">
           <RouterLink to="/privacy-policy">Privacy Policy</RouterLink>
-          <a href="#">Terms of Service</a>
+          <RouterLink to="/terms-of-service">Terms of Service</RouterLink>
         </div>
       </div>
     </div>

@@ -51,9 +51,9 @@ const jurusan = [
         <div class="breadcrumb">
           <RouterLink to="/">Beranda</RouterLink><span>/</span>
           <span>Akademik</span><span>/</span>
-          <span>Program Studi / Jurusan</span>
+          <span>Jurusan</span>
         </div>
-        <h1 class="page-hero-title">Program Studi / Jurusan</h1>
+        <h1 class="page-hero-title">Jurusan</h1>
         <p class="page-hero-subtitle">Pilih jalur akademik yang sesuai dengan minat, bakat, dan impian masa depanmu.</p>
       </div>
     </section>

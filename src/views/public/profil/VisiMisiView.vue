@@ -1,5 +1,4 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="visi-misi-page">
@@ -14,7 +13,9 @@
           <span>Visi Misi</span>
         </div>
         <h1 class="page-hero-title">Visi & Misi</h1>
-        <p class="page-hero-subtitle">Komitmen kami dalam mencetak generasi penerus yang unggul dan berakhlak mulia.</p>
+        <p class="page-hero-subtitle">
+          Komitmen kami dalam mencetak generasi penerus yang unggul dan berakhlak mulia.
+        </p>
       </div>
     </section>
 
@@ -25,7 +26,8 @@
           <div class="bg-pattern"></div>
           <h2 class="text-3xl font-bold text-primary mb-6 relative z-10">Visi Madrasah</h2>
           <p class="text-xl leading-relaxed text-dark font-medium relative z-10">
-            "Terwujudnya Peserta Didik yang Beriman, Bertaqwa, Berakhlak Mulia, Cerdas, Terampil, Mandiri dan Berwawasan Lingkungan."
+            "Terwujudnya Peserta Didik yang Beriman, Bertaqwa, Berakhlak Mulia, Cerdas, Terampil,
+            Mandiri dan Berwawasan Lingkungan."
           </p>
         </div>
 
@@ -39,7 +41,10 @@
             </div>
             <div class="misi-item card">
               <div class="misi-number">2</div>
-              <p>Melaksanakan pembelajaran dan bimbingan secara efektif sehingga setiap siswa berkembang secara optimal, sesuai dengan potensi yang dimiliki.</p>
+              <p>
+                Melaksanakan pembelajaran dan bimbingan secara efektif sehingga setiap siswa
+                berkembang secara optimal, sesuai dengan potensi yang dimiliki.
+              </p>
             </div>
             <div class="misi-item card">
               <div class="misi-number">3</div>
@@ -47,11 +52,17 @@
             </div>
             <div class="misi-item card">
               <div class="misi-number">4</div>
-              <p>Mendorong dan membantu setiap siswa untuk mengenali potensi dirinya, sehingga dapat berkembang secara optimal.</p>
+              <p>
+                Mendorong dan membantu setiap siswa untuk mengenali potensi dirinya, sehingga dapat
+                berkembang secara optimal.
+              </p>
             </div>
             <div class="misi-item card">
               <div class="misi-number">5</div>
-              <p>Menerapkan manajemen partisipatif dengan melibatkan seluruh warga madrasah dan kelompok kepentingan yang terkait dengan madrasah.</p>
+              <p>
+                Menerapkan manajemen partisipatif dengan melibatkan seluruh warga madrasah dan
+                kelompok kepentingan yang terkait dengan madrasah.
+              </p>
             </div>
           </div>
         </div>
@@ -61,18 +72,41 @@
 </template>
 
 <style scoped>
-.visi-misi-page { padding-top: 80px; }
+.visi-misi-page {
+  padding-top: 80px;
+}
 
-.max-w-4xl { max-width: 900px; margin: 0 auto; }
-.p-10 { padding: 3rem; }
-.mb-10 { margin-bottom: 3rem; }
-.text-3xl { font-size: 2rem; }
-.text-xl { font-size: 1.25rem; }
-.font-bold { font-weight: 700; }
-.font-medium { font-weight: 500; }
-.text-primary { color: var(--primary); }
-.text-dark { color: var(--dark); }
-.leading-relaxed { line-height: 1.8; }
+.max-w-4xl {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.p-10 {
+  padding: 3rem;
+}
+.mb-10 {
+  margin-bottom: 3rem;
+}
+.text-3xl {
+  font-size: 2rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+}
+.font-bold {
+  font-weight: 700;
+}
+.font-medium {
+  font-weight: 500;
+}
+.text-primary {
+  color: var(--primary);
+}
+.text-dark {
+  color: var(--dark);
+}
+.leading-relaxed {
+  line-height: 1.8;
+}
 
 .bg-pattern {
   position: absolute;

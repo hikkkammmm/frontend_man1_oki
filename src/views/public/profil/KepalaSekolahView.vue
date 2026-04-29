@@ -15,7 +15,9 @@ const principalImg = '/principal_portrait_1777021823882.png'
           <span>Kepala Sekolah</span>
         </div>
         <h1 class="page-hero-title">Kepala Sekolah</h1>
-        <p class="page-hero-subtitle">Profil pimpinan Madrasah Aliyah Negeri 1 Ogan Komering Ilir.</p>
+        <p class="page-hero-subtitle">
+          Profil pimpinan Madrasah Aliyah Negeri 1 Ogan Komering Ilir.
+        </p>
       </div>
     </section>
 
@@ -25,7 +27,7 @@ const principalImg = '/principal_portrait_1777021823882.png'
           <div class="profile-image-col">
             <div class="image-wrapper">
               <div class="bg-accent"></div>
-              <img :src="principalImg" alt="Kepala Sekolah" class="kepsek-img">
+              <img :src="principalImg" alt="Kepala Sekolah" class="kepsek-img" />
             </div>
             <div class="contact-info mt-6 card p-6 text-center">
               <h4 class="font-bold mb-2">Kontak</h4>
@@ -33,11 +35,11 @@ const principalImg = '/principal_portrait_1777021823882.png'
               <p class="text-muted">+62 812 3456 7890</p>
             </div>
           </div>
-          
+
           <div class="profile-content-col">
             <h2 class="text-4xl font-bold text-dark mb-2">Drs. H. Ahmad Dahlan, M.Pd.</h2>
             <p class="text-primary font-semibold text-lg mb-6">Kepala Madrasah MAN 1 OKI</p>
-            
+
             <div class="prose">
               <h3>Riwayat Pendidikan</h3>
               <ul>
@@ -55,7 +57,11 @@ const principalImg = '/principal_portrait_1777021823882.png'
 
               <h3>Pesan & Harapan</h3>
               <p>
-                "Pendidikan di madrasah bukan hanya tentang mentransfer ilmu pengetahuan, tetapi juga menanamkan nilai-nilai akhlakul karimah. Kami di MAN 1 OKI berkomitmen penuh untuk mengawal peserta didik tidak hanya sukses secara akademis sehingga mampu bersaing di perguruan tinggi favorit, tetapi juga sukses menjadi pribadi yang bermanfaat bagi agama, nusa, dan bangsa."
+                "Pendidikan di madrasah bukan hanya tentang mentransfer ilmu pengetahuan, tetapi
+                juga menanamkan nilai-nilai akhlakul karimah. Kami di MAN 1 OKI berkomitmen penuh
+                untuk mengawal peserta didik tidak hanya sukses secara akademis sehingga mampu
+                bersaing di perguruan tinggi favorit, tetapi juga sukses menjadi pribadi yang
+                bermanfaat bagi agama, nusa, dan bangsa."
               </p>
             </div>
           </div>
@@ -66,17 +72,38 @@ const principalImg = '/principal_portrait_1777021823882.png'
 </template>
 
 <style scoped>
-.kepsek-page { padding-top: 80px; }
+.kepsek-page {
+  padding-top: 80px;
+}
 
-.max-w-5xl { max-width: 1000px; margin: 0 auto; }
-.text-4xl { font-size: 2.25rem; }
-.text-lg { font-size: 1.125rem; }
-.font-bold { font-weight: 700; }
-.font-semibold { font-weight: 600; }
-.text-primary { color: var(--primary); }
-.text-dark { color: var(--dark); }
-.text-muted { color: var(--text-muted); }
-.p-6 { padding: 1.5rem; }
+.max-w-5xl {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.text-4xl {
+  font-size: 2.25rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+}
+.font-bold {
+  font-weight: 700;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.text-primary {
+  color: var(--primary);
+}
+.text-dark {
+  color: var(--dark);
+}
+.text-muted {
+  color: var(--text-muted);
+}
+.p-6 {
+  padding: 1.5rem;
+}
 
 .profile-grid {
   display: grid;
