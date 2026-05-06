@@ -193,11 +193,11 @@ const filtered = () => {
                 <p class="poster-desc">{{ e.desc }}</p>
                 <div class="poster-meta">
                   <div class="meta-item">
-                    <span class="meta-label">Jadwal:</span> 
+                    <span class="meta-label">Jadwal:</span>
                     <span>{{ e.jadwal }}</span>
                   </div>
                   <div class="meta-item">
-                    <span class="meta-label">Pembina:</span> 
+                    <span class="meta-label">Pembina:</span>
                     <span>{{ e.pembina }}</span>
                   </div>
                 </div>
@@ -216,7 +216,7 @@ const filtered = () => {
 }
 .page-hero {
   position: relative;
-  padding: 6rem 0 4rem;
+  padding: 7rem 0 4rem;
   background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
 }
 .page-hero-overlay {
@@ -305,7 +305,12 @@ const filtered = () => {
 .poster-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 40, 20, 0.95) 0%, rgba(0, 40, 20, 0.4) 60%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 40, 20, 0.95) 0%,
+    rgba(0, 40, 20, 0.4) 60%,
+    rgba(0, 0, 0, 0) 100%
+  );
   display: flex;
   align-items: flex-end;
   padding: 1.75rem;
@@ -334,14 +339,14 @@ const filtered = () => {
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .poster-nama {
   font-size: 1.5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   line-height: 1.3;
 }
 

@@ -1,37 +1,44 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
+import { kegiatanStore } from '../../stores/admin/kegiatan'
 
-const heroImg = '/school_hero_1777021806911.png'
-
-const kegiatanList = ref([
-  { id: 1, name: 'Pramuka', icon: '⛺', desc: 'Membentuk karakter disiplin, mandiri, dan berjiwa kepemimpinan.' },
-  { id: 2, name: 'Rohis', icon: '🕌', desc: 'Membina kerohanian Islam dan memperdalam ilmu agama bagi siswa.' },
-  { id: 3, name: 'Paskibra', icon: '🇮🇩', desc: 'Melatih kedisiplinan baris-berbaris dan rasa nasionalisme tinggi.' },
-  { id: 4, name: 'PMR', icon: '⚕️', desc: 'Membekali siswa dengan kemampuan pertolongan pertama dan kesehatan.' },
-  { id: 5, name: 'Karya Ilmiah Remaja', icon: '🔬', desc: 'Mengembangkan minat siswa dalam penelitian dan penulisan ilmiah.' },
-  { id: 6, name: 'Olah Raga', icon: '⚽', desc: 'Wadah penyaluran bakat olahraga mulai dari basket, voli, hingga futsal.' },
-  { id: 7, name: 'Seni Tari', icon: '💃', desc: 'Melestarikan budaya bangsa melalui seni tari tradisional dan modern.' },
-  { id: 8, name: 'Paduan Suara', icon: '🎵', desc: 'Melatih kemampuan vokal dan harmoni bernyanyi bersama kelompok.' }
-])
+const store = kegiatanStore()
+const kegiatanList = computed(() => store.list.filter(k => k.status === 'active'))
 </script>
 
 <template>
   <div class="kegiatan-page">
-    <div class="page-header" :style="{ backgroundImage: `url(${heroImg})` }">
-      <div class="header-overlay"></div>
-      <div class="container relative z-10 text-center animate-fade-in-up">
-        <h1 class="page-title">Kegiatan Ekstrakurikuler</h1>
-        <p class="page-subtitle">Wadah pengembangan bakat, minat, dan potensi siswa di luar jam pelajaran.</p>
+    <section class="page-hero">
+      <div class="page-hero-overlay"></div>
+      <div class="container page-hero-content animate-fade-in-up">
+        <div class="breadcrumb">
+          <RouterLink to="/">Beranda</RouterLink>
+          <span>/</span>
+          <span>Kesiswaan</span>
+          <span>/</span>
+          <span>Kegiatan Ekstrakurikuler</span>
+        </div>
+        <h1 class="page-hero-title">Kegiatan Ekstrakurikuler</h1>
+        <p class="page-hero-subtitle">Wadah pengembangan bakat, minat, dan potensi siswa di luar jam pelajaran.</p>
       </div>
-    </div>
+    </section>
 
     <section class="section">
       <div class="container">
         <div class="kegiatan-grid">
-          <div v-for="kegiatan in kegiatanList" :key="kegiatan.id" class="kegiatan-card card">
-            <div class="kegiatan-icon">{{ kegiatan.icon }}</div>
-            <h3 class="kegiatan-name">{{ kegiatan.name }}</h3>
-            <p class="kegiatan-desc">{{ kegiatan.desc }}</p>
+          <div v-for="kegiatan in kegiatanList" :key="kegiatan.id" class="kegiatan-card">
+            <div class="kegiatan-img-wrap">
+              <img :src="kegiatan.image" :alt="kegiatan.name" class="kegiatan-img" />
+              <div class="kegiatan-img-overlay"></div>
+            </div>
+            <div class="kegiatan-body">
+              <h3 class="kegiatan-name">{{ kegiatan.name }}</h3>
+              <p class="kegiatan-desc">{{ kegiatan.description }}</p>
+              <div class="kegiatan-meta">
+                <span class="kegiatan-schedule">📅 {{ kegiatan.schedule }}</span>
+                <span class="kegiatan-coord">👤 {{ kegiatan.coordinator }}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -40,96 +47,41 @@ const kegiatanList = ref([
 </template>
 
 <style scoped>
-.page-header {
-  position: relative;
-  padding: 8rem 0 4rem;
-  background-size: cover;
-  background-position: center;
-  color: white;
-  margin-top: 0;
-}
-
-.header-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(0, 69, 50, 0.9) 0%, rgba(0, 69, 50, 0.6) 100%);
-}
-
-.relative { position: relative; }
-.z-10 { z-index: 10; }
-
-.page-title {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.page-subtitle {
-  font-size: 1.25rem;
-  opacity: 0.9;
-  max-width: 600px;
-  margin: 0 auto;
-}
+.kegiatan-page { padding-top: 80px; }
 
 .kegiatan-grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 2rem;
+  display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem;
 }
-
-@media (min-width: 640px) {
-  .kegiatan-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 1024px) {
-  .kegiatan-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (min-width: 1280px) {
-  .kegiatan-grid { grid-template-columns: repeat(4, 1fr); }
-}
+@media (min-width: 640px) { .kegiatan-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .kegiatan-grid { grid-template-columns: repeat(3, 1fr); } }
 
 .kegiatan-card {
-  padding: 2.5rem 1.5rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--bg-main);
-  border: 1px solid var(--gray-light);
-  transition: all 0.3s ease;
+  border-radius: 16px; overflow: hidden; background: white;
+  border: 1px solid var(--gray-light); box-shadow: var(--shadow-sm);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .kegiatan-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,69,50,0.15);
   border-color: var(--primary);
 }
 
-.kegiatan-icon {
-  font-size: 4rem;
-  line-height: 1;
-  margin-bottom: 1.5rem;
-  transition: transform 0.3s ease;
+.kegiatan-img-wrap { position: relative; height: 220px; overflow: hidden; }
+.kegiatan-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.kegiatan-card:hover .kegiatan-img { transform: scale(1.08); }
+.kegiatan-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,69,50,0.6) 0%, transparent 60%);
 }
 
-.kegiatan-card:hover .kegiatan-icon {
-  transform: scale(1.1);
-}
+.kegiatan-body { padding: 1.5rem; }
+.kegiatan-name { font-size: 1.25rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; }
+.kegiatan-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; }
 
-.kegiatan-name {
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--dark);
-  margin-bottom: 1rem;
-}
-
-.kegiatan-desc {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
+.kegiatan-meta { display: flex; flex-direction: column; gap: 0.5rem; }
+.kegiatan-schedule, .kegiatan-coord {
+  font-size: 0.8rem; color: var(--primary); font-weight: 500;
+  background: rgba(0,69,50,0.08); padding: 0.35rem 0.85rem; border-radius: 999px;
+  width: fit-content;
 }
 </style>

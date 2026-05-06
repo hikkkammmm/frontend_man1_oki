@@ -151,7 +151,9 @@ const jadwal = [
 </template>
 
 <style scoped>
-.ppdb-page { padding-top: 80px; }
+.ppdb-page {
+  padding-top: 80px;
+}
 
 /* Hero */
 .ppdb-hero {
@@ -165,7 +167,10 @@ const jadwal = [
   position: absolute; inset: 0;
   background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c1a059' fill-opacity='0.05'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
-.ppdb-hero-content { position: relative; color: white; padding: 4rem 0; }
+.ppdb-hero-content {
+  position: relative; color:
+  white; padding: 4rem 0;
+}
 .hero-badge {
   display: inline-block; padding: 0.5rem 1.25rem;
   border-radius: 2rem; background: var(--secondary); color: #1a1a1a;

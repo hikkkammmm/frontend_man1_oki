@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { beritaStore } from '../../../stores/admin/berita'
 import TipTapEditor from '../../../components/admin/TipTapEditor.vue'
+import ImageDropZone from '../../../components/admin/ImageDropZone.vue'
 
 const router = useRouter()
 const route = useRoute()
@@ -19,7 +20,7 @@ const form = ref({
   author: 'Admin',
   content: '',
   excerpt: '',
-  image: '/school_hero_1777021806911.png',
+  image: '',
 })
 
 onMounted(() => {
@@ -145,17 +146,7 @@ async function save(status: 'published' | 'draft') {
 
           <div class="form-card">
             <h2 class="form-card-title">Gambar Utama</h2>
-            <div class="img-preview-box">
-              <img v-if="form.image" :src="form.image" alt="Preview" />
-              <div v-else class="img-placeholder">
-                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-                <span>Belum ada gambar</span>
-              </div>
-            </div>
-            <div class="field">
-              <label class="field-label">URL Gambar</label>
-              <input v-model="form.image" type="text" class="field-input" placeholder="/path/gambar.jpg" id="edit-berita-image" />
-            </div>
+            <ImageDropZone v-model="form.image" aspect-ratio="16/9" />
           </div>
         </div>
       </div>

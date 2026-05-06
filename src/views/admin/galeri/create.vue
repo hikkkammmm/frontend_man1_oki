@@ -2,12 +2,13 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { galeriStore } from '../../../stores/admin/galeri'
+import ImageDropZone from '../../../components/admin/ImageDropZone.vue'
 
 const router = useRouter()
 const store = galeriStore()
 const isSaving = ref(false)
 
-const form = ref({ title: '', category: 'Kegiatan', url: '/school_hero_1777021806911.png', date: new Date().toISOString().slice(0, 10) })
+const form = ref({ title: '', category: 'Kegiatan', url: '', date: new Date().toISOString().slice(0, 10) })
 
 async function save() {
   if (!form.value.title.trim()) return
@@ -40,19 +41,8 @@ async function save() {
       <div class="form-main">
         <div class="form-card">
           <h2 class="form-card-title">Detail Foto</h2>
-          <div class="img-preview-box" style="aspect-ratio:16/9">
-            <img v-if="form.url" :src="form.url" alt="Preview" />
-            <div v-else class="img-placeholder">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-              <p>Pratinjau foto akan muncul di sini</p>
-            </div>
-          </div>
-          <div class="field">
-            <label class="field-label">URL / Path Foto <span class="req">*</span></label>
-            <input v-model="form.url" type="text" class="field-input" placeholder="/images/foto.jpg" id="galeri-url" />
-            <p class="field-hint">Masukkan path relatif dari folder public, misalnya /images/foto.jpg</p>
-          </div>
-          <div class="field">
+          <ImageDropZone v-model="form.url" aspect-ratio="16/9" label="Foto Galeri" />
+          <div class="field" style="margin-top: 1rem">
             <label class="field-label">Keterangan Foto <span class="req">*</span></label>
             <input v-model="form.title" type="text" class="field-input" placeholder="Deskripsi singkat foto..." id="galeri-title" />
           </div>

@@ -86,7 +86,8 @@ ul {
 /* Page Hero */
 .page-hero {
   position: relative;
-  padding: 6rem 0 4rem;
+  margin-top: -80px;
+  padding: 7rem 0 4rem;
   background: linear-gradient(110deg, var(--primary-dark) 0%, var(--primary) 100%);
   overflow: hidden;
 }

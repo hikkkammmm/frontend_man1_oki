@@ -141,17 +141,4 @@ async function save() {
 .upload-subtext { font-size: 0.8rem; color: #9ca3af; margin-top: 0.25rem; }
 .file-input { display: none; }
 </style>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </template>
-  </div>
-</template>
 
-<style scoped>
-@import '../../../../src/assets/admin-crud.css';
-.form-main { min-width: 0; }
-.form-sidebar { position: sticky; top: 1.5rem; }
-</style>
